@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio | Projetos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Portfólio</a>
+        <nav class="navbar">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="projetos.html" class="active">Projetos</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <section class="projects">
+        <h2 class="heading">Meus <span>Projetos</span></h2>
+        
+        <div class="filter-buttons">
+            <button class="btn active" data-filter="all">Todos</button>
+            <button class="btn" data-filter="web">Web</button>
+            <button class="btn" data-filter="app">App</button>
+            <button class="btn" data-filter="design">Design</button>
+        </div>
+        
+        <div class="projects-container">
+            <div class="project-box" data-item="web">
+                <img src="images/project1.jpg" alt="Projeto 1">
+                <div class="project-layer">
+                    <h4>Website Moderno</h4>
+                    <p>Site responsivo para empresa de tecnologia</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-box" data-item="app">
+                <img src="images/project2.jpg" alt="Projeto 2">
+                <div class="project-layer">
+                    <h4>Aplicativo Mobile</h4>
+                    <p>Aplicativo de gerenciamento de tarefas</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-box" data-item="design">
+                <img src="images/project3.jpg" alt="Projeto 3">
+                <div class="project-layer">
+                    <h4>Design de Interface</h4>
+                    <p>UI/UX para aplicativo financeiro</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-box" data-item="web">
+                <img src="images/project4.jpg" alt="Projeto 4">
+                <div class="project-layer">
+                    <h4>E-commerce</h4>
+                    <p>Loja virtual com carrinho de compras</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-box" data-item="app">
+                <img src="images/project5.jpg" alt="Projeto 5">
+                <div class="project-layer">
+                    <h4>App de Notícias</h4>
+                    <p>Aplicativo de notícias em tempo real</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-box" data-item="design">
+                <img src="images/project6.jpg" alt="Projeto 6">
+                <div class="project-layer">
+                    <h4>Identidade Visual</h4>
+                    <p>Branding para startup de tecnologia</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
