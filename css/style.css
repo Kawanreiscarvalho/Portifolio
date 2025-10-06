@@ -358,6 +358,7 @@ section {
     background: var(--bg-color);
     border-radius: .5rem;
     position: relative;
+    overflow: hidden;
 }
 
 .skill-bar::before {
@@ -368,26 +369,69 @@ section {
     height: 100%;
     border-radius: .5rem;
     background: var(--main-color);
+    animation: fillBar 2s ease-in-out forwards;
 }
 
+/* Barras de habilidade com animações */
 .skill-bar.html::before {
     width: 95%;
+    animation: fillBarHTML 2s ease-in-out forwards;
 }
 
 .skill-bar.css::before {
     width: 90%;
+    animation: fillBarCSS 2s ease-in-out forwards;
 }
 
 .skill-bar.javascript::before {
     width: 85%;
+    animation: fillBarJS 2s ease-in-out forwards;
+}
+
+.skill-bar.sql::before {
+    width: 85%;
+    animation: fillBarSQL 2s ease-in-out forwards;
 }
 
 .skill-bar.react::before {
-    width: 80%;
+    width: 70%;
+    animation: fillBarReact 2s ease-in-out forwards;
 }
 
 .skill-bar.node::before {
     width: 75%;
+    animation: fillBarNode 2s ease-in-out forwards;
+}
+
+/* Animações das barras de habilidade */
+@keyframes fillBarHTML {
+    0% { width: 0%; }
+    100% { width: 95%; }
+}
+
+@keyframes fillBarCSS {
+    0% { width: 0%; }
+    100% { width: 90%; }
+}
+
+@keyframes fillBarJS {
+    0% { width: 0%; }
+    100% { width: 85%; }
+}
+
+@keyframes fillBarSQL {
+    0% { width: 0%; }
+    100% { width: 85%; }
+}
+
+@keyframes fillBarReact {
+    0% { width: 0%; }
+    100% { width: 70%; }
+}
+
+@keyframes fillBarNode {
+    0% { width: 0%; }
+    100% { width: 75%; }
 }
 
 /* Projetos */
@@ -655,3 +699,4 @@ section {
         height: 90vw;
     }
 }
+
