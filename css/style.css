@@ -70,11 +70,47 @@ section {
     color: var(--main-color);
 }
 
+/* Menu Icon - Estilo Google */
 #menu-icon {
-    font-size: 3.6rem;
-    color: var(--text-color);
-    cursor: pointer;
     display: none;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Animação X quando ativo */
+#menu-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+#menu-icon.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+#menu-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Hover effects */
+#menu-icon:hover span {
+    background: var(--main-color);
 }
 
 /* Home */
@@ -612,91 +648,390 @@ section {
     font-size: 1.6rem;
 }
 
-/* Responsividade */
-@media (max-width: 1200px) {
-    html {
-        font-size: 55%;
-    }
-}
+/* ===== RESPONSIVIDADE ===== */
 
-@media (max-width: 991px) {
+/* Tablets (768px a 1024px) */
+@media (max-width: 1024px) {
     .header {
-        padding: 2rem 4%;
+        padding: 2rem 5%;
     }
     
     section {
-        padding: 10rem 4% 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    #menu-icon {
-        display: block;
-    }
-    
-    .navbar {
-        position: absolute;
-        top: 100%;
-        left: -100%;
-        width: 100%;
-        padding: 1rem 4%;
-        background: var(--bg-color);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-        z-index: 1;
-        transition: .25s ease;
-        transition-delay: .25s;
-    }
-    
-    .navbar.active {
-        left: 0;
-        transition-delay: 0s;
-    }
-    
-    .navbar a {
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-    }
-    
-    .home {
-        flex-direction: column;
-    }
-    
-    .home-content {
-        order: 2;
-        max-width: 100%;
-    }
-    
-    .home-img {
-        order: 1;
-        width: 70vw;
-        height: 70vw;
-        margin-bottom: 4rem;
-    }
-    
-    .contact-form .input-box input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 520px) {
-    html {
-        font-size: 50%;
+        padding: 8rem 5% 2rem;
     }
     
     .home-content h1 {
         font-size: 4.5rem;
     }
     
-    .home-content .typing-text {
-        font-size: 2.6rem;
+    .about-container {
+        gap: 3rem;
+    }
+    
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 370px) {
+/* Tablets Pequenas (577px a 768px) */
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+    
+    #menu-icon {
+        display: flex;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--bg-color);
+        flex-direction: column;
+        padding: 10rem 3rem;
+        text-align: left;
+        transition: .5s ease;
+        box-shadow: 2px 0 10px rgba(0,0,0,.2);
+        z-index: 99;
+    }
+    
+    .navbar.active {
+        left: 0;
+    }
+    
+    .navbar a {
+        display: block;
+        font-size: 2.2rem;
+        margin: 2rem 0;
+        padding: 1rem 2rem;
+        border-left: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .navbar a:hover,
+    .navbar a.active {
+        border-left-color: var(--main-color);
+        background: rgba(0, 171, 240, 0.1);
+        padding-left: 3rem;
+    }
+    
+    .home {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .home-content {
+        max-width: 100%;
+    }
+    
+    .home-content h1 {
+        font-size: 4rem;
+    }
+    
+    .home-img {
+        width: 70vw;
+        height: 70vw;
+    }
+    
+    .btn-box {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .about-container {
+        flex-direction: column;
+    }
+    
+    .about-img,
+    .about-content {
+        flex: 1 1 100%;
+    }
+    
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .filter-buttons {
+        gap: 1rem;
+    }
+    
+    .filter-buttons .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .contact-form .input-box {
+        flex-direction: column;
+    }
+    
+    .contact-form .input-box input {
+        width: 100%;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Celulares (481px a 576px) */
+@media (max-width: 576px) {
+    .header {
+        padding: 2rem 3%;
+    }
+    
+    section {
+        padding: 7rem 3% 2rem;
+    }
+    
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .home-content .typing-text {
+        font-size: 2.5rem;
+    }
+    
+    .heading {
+        font-size: 4rem;
+    }
+    
+    .btn-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        height: auto;
+    }
+    
+    .btn-box .btn {
+        width: 100%;
+        max-width: 25rem;
+    }
+    
+    .home-img {
+        width: 80vw;
+        height: 80vw;
+    }
+    
+    .home-img .social-links {
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .about-info {
+        flex-direction: column;
+    }
+    
+    .about-info .info-box {
+        flex: 1 1 100%;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-buttons .btn {
+        width: 100%;
+        max-width: 20rem;
+    }
+    
+    .project-box {
+        height: 22rem;
+    }
+    
+    .project-layer h4 {
+        font-size: 1.8rem;
+    }
+    
+    .project-layer p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .header {
+        padding: 1.5rem 3%;
+    }
+    
+    .logo {
+        font-size: 2.2rem;
+    }
+    
+    .home-content h1 {
+        font-size: 3rem;
+    }
+    
+    .home-content .typing-text {
+        font-size: 2rem;
+    }
+    
+    .heading {
+        font-size: 3.5rem;
+    }
+    
+    .sub-heading {
+        font-size: 2.5rem;
+    }
+    
     .home-img {
         width: 90vw;
         height: 90vw;
     }
+    
+    .project-box {
+        height: 20rem;
+    }
+    
+    .project-layer {
+        padding: 0 2rem;
+    }
+    
+    .project-layer h4 {
+        font-size: 1.6rem;
+    }
+    
+    .project-layer p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-layer a {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .project-layer a i {
+        font-size: 1.6rem;
+    }
+    
+    .contact-form .input-box input,
+    .contact-form textarea {
+        padding: 1.2rem;
+        font-size: 1.4rem;
+    }
+    
+    .navbar {
+        width: 85%;
+        padding: 8rem 2rem;
+    }
+    
+    .navbar a {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
 }
 
+/* Telas Muito Pequenas (até 360px) */
+@media (max-width: 360px) {
+    .home-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .home-content p {
+        font-size: 1.4rem;
+    }
+    
+    .navbar a {
+        font-size: 1.8rem;
+        margin: 1.5rem 0;
+    }
+    
+    .projects-container {
+        gap: 1.5rem;
+    }
+    
+    .project-box {
+        height: 18rem;
+    }
+    
+    .info-box {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Orientação Landscape em Celulares */
+@media (max-height: 600px) and (orientation: landscape) {
+    .header {
+        padding: 1rem 5%;
+    }
+    
+    section {
+        padding: 6rem 5% 1rem;
+        min-height: auto;
+    }
+    
+    .home {
+        min-height: auto;
+        padding: 5rem 0;
+    }
+    
+    .navbar {
+        height: auto;
+        overflow-y: auto;
+    }
+    
+    .project-box {
+        height: 15rem;
+    }
+}
+
+/* Telas Grandes (acima de 1200px) */
+@media (min-width: 1200px) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Ajustes de performance para dispositivos móveis */
+@media (max-width: 768px) {
+    .project-box:hover img {
+        transform: none;
+    }
+    
+    .project-box {
+        transform: none;
+    }
+}
+
+/* Prevenir scroll quando menu está aberto */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Overlay para mobile */
+@media (max-width: 768px) {
+    .navbar::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .navbar.active::before {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
