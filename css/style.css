@@ -1035,3 +1035,259 @@ body.menu-open {
         pointer-events: all;
     }
 }
+
+/* ===== MODO LIGHT/DARK ===== */
+:root[data-theme="light"] {
+    --bg-color: #f0f8ff;
+    --second-bg-color: #e6f3ff;
+    --text-color: #081b29;
+    --main-color: #0077b6;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+
+/* Toggle do Tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 1.5rem var(--main-color);
+}
+
+.theme-toggle i {
+    font-size: 2rem;
+    color: var(--bg-color);
+    transition: transform 0.3s ease;
+}
+
+/* Animação do ícone */
+.theme-toggle .fa-sun {
+    display: none;
+}
+
+.theme-toggle .fa-moon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .fa-sun {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .fa-moon {
+    display: none;
+}
+
+/* ===== MELHORIAS DE RESPONSIVIDADE PARA CELULAR ===== */
+
+/* Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .header {
+        padding: 1.5rem 3%;
+    }
+    
+    .logo {
+        font-size: 2.2rem;
+    }
+    
+    .home-content h1 {
+        font-size: 3rem;
+    }
+    
+    .home-content .typing-text {
+        font-size: 2rem;
+    }
+    
+    .heading {
+        font-size: 3.5rem;
+    }
+    
+    .sub-heading {
+        font-size: 2.5rem;
+    }
+    
+    .home-img {
+        width: 90vw;
+        height: 90vw;
+    }
+    
+    .project-box {
+        height: 20rem;
+    }
+    
+    .project-layer {
+        padding: 0 2rem;
+    }
+    
+    .project-layer h4 {
+        font-size: 1.6rem;
+    }
+    
+    .project-layer p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-layer a {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .project-layer a i {
+        font-size: 1.6rem;
+    }
+    
+    .contact-form .input-box input,
+    .contact-form textarea {
+        padding: 1.2rem;
+        font-size: 1.4rem;
+    }
+    
+    .navbar {
+        width: 85%;
+        padding: 8rem 2rem;
+    }
+    
+    .navbar a {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+    
+    .theme-toggle {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+}
+
+/* Telas Muito Pequenas (até 360px) */
+@media (max-width: 360px) {
+    .home-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .home-content p {
+        font-size: 1.4rem;
+    }
+    
+    .navbar a {
+        font-size: 1.8rem;
+        margin: 1.5rem 0;
+    }
+    
+    .projects-container {
+        gap: 1.5rem;
+    }
+    
+    .project-box {
+        height: 18rem;
+    }
+    
+    .info-box {
+        padding: 2rem 1rem;
+    }
+    
+    .theme-toggle {
+        bottom: 1rem;
+        right: 1rem;
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .theme-toggle i {
+        font-size: 1.6rem;
+    }
+}
+
+/* Orientação Landscape em Celulares */
+@media (max-height: 600px) and (orientation: landscape) {
+    .header {
+        padding: 1rem 5%;
+    }
+    
+    section {
+        padding: 6rem 5% 1rem;
+        min-height: auto;
+    }
+    
+    .home {
+        min-height: auto;
+        padding: 5rem 0;
+    }
+    
+    .navbar {
+        height: auto;
+        overflow-y: auto;
+    }
+    
+    .project-box {
+        height: 15rem;
+    }
+    
+    .theme-toggle {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Ajustes de performance para dispositivos móveis */
+@media (max-width: 768px) {
+    .project-box:hover img {
+        transform: none;
+    }
+    
+    .project-box {
+        transform: none;
+    }
+}
+
+/* Prevenir scroll quando menu está aberto */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Overlay para mobile */
+@media (max-width: 768px) {
+    .navbar::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .navbar.active::before {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
